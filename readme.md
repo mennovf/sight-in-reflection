@@ -1,5 +1,6 @@
+# Sight in a Mirror Room
 
-I came an across a programming problem which has an interesting mathematical solution.
+I came across a programming problem which has an interesting mathematical solution.
 
 The problem statement is as follows (with reduced fluff): There's a rectangular room with mirrored wall and two points *source* $s$ and *target* $t$. The dimensions of the room $(w, h)$ and the locations of the points have integer coordinates. The points are contained within the room, never on a wall. The question asks how many directions there are that $s$ can look in, and see $t$. The line-of-sight ray reflects when hitting the wall and can in principle bounce forever. To restrict the number of solutions the ray "stops" after a given distance $D$.
 
@@ -7,7 +8,7 @@ The common way of thinking about these problems is not to reflect the ray, but c
 
 $$\begin{tikzpicture}
   % Draw the rectangular box
-  \draw (0,0) rectslope (4,3);
+  \draw (0,0) rectangle (4,3);
   
   % Draw the point
   \fill (1,2) circle (2pt) node[above] {s};
@@ -30,11 +31,13 @@ $$\begin{tikzpicture}
 
 $$\begin{tikzpicture}
   % Draw the rectangular box
-  \draw (0,0) rectslope (4,3);
-  \draw (0,3) rectslope (4,6);
+  \draw (0,0) rectangle (4,3);
+  \draw (0,3) rectangle (4,6);
   
   % Draw the point
   \fill (1,2) circle (2pt) node[above] {s};
+  % Draw a reflection
+  \fill (1, 4) circle (2pt) node[above] {s'};
   
   % Define the slope of incidence
   \pgfmathsetmacro{\slope}{30}
@@ -65,13 +68,13 @@ $$\begin{tikzpicture}
 
 % Draw the rectangular box
 
-\draw (0,0) rectslope (4,3);
+\draw (0,0) rectangle (4,3);
 
-\draw (0,3) rectslope (4,6);
+\draw (0,3) rectangle (4,6);
 
-\draw (4,3) rectslope (8,6);
+\draw (4,3) rectangle (8,6);
 
-\draw (4,0) rectslope (8,3);
+\draw (4,0) rectangle (8,3);
 
 % Draw the point
 
@@ -122,13 +125,13 @@ $$\begin{tikzpicture}[scale=0.4]
 
 \foreach \col in {-\nCols,...,\nCols} {
 
-\draw (\row*2*4, \col*2*3) rectslope (\row*2*4 + 4, \col*2*3 + 3);
+\draw (\row*2*4, \col*2*3) rectangle (\row*2*4 + 4, \col*2*3 + 3);
 
-\draw[dashed] (\row*2*4 + 4 + \boxMargin, \col*2*3 + \boxMargin) rectslope (\row*2*4 + 4 + 4 - \boxMargin, \col*2*3 + 3 - \boxMargin) ;
+\draw[dashed] (\row*2*4 + 4 + \boxMargin, \col*2*3 + \boxMargin) rectangle (\row*2*4 + 4 + 4 - \boxMargin, \col*2*3 + 3 - \boxMargin) ;
 
-\draw[dashed] (\row*2*4 + \boxMargin, \col*2*3 + 3 + \boxMargin) rectslope (\row*2*4 + 4 - \boxMargin, \col*2*3 + 3 + 3 - \boxMargin);
+\draw[dashed] (\row*2*4 + \boxMargin, \col*2*3 + 3 + \boxMargin) rectangle (\row*2*4 + 4 - \boxMargin, \col*2*3 + 3 + 3 - \boxMargin);
 
-\draw[dashed] (\row*2*4 + 4 + \boxMargin, \col*2*3 + 3 +\boxMargin) rectslope (\row*2*4 + 4 + 4 - \boxMargin, \col*2*3 + 3 + 3 - \boxMargin);
+\draw[dashed] (\row*2*4 + 4 + \boxMargin, \col*2*3 + 3 +\boxMargin) rectangle (\row*2*4 + 4 + 4 - \boxMargin, \col*2*3 + 3 + 3 - \boxMargin);
 
 \fill (\row*2*4 + 2, \col*2*3 + 1.5) circle (4pt);
 
@@ -157,10 +160,15 @@ This is difficult to work with since we have a sum under the square root in $\le
 $$4 \, k_{x}^{2} v_{x}^{2} w^{2} + 8 \, k_{x} k_{y} v_{x} v_{y} w^{2} + 4 \, k_{y}^{2} v_{y}^{2} w^{2} + 4 \, k_{x} p_{x} v_{x}^{2} w - 4 \, k_{x} s_{x} v_{x}^{2} w + 4 \, k_{y} p_{x} v_{x} v_{y} w + 4 \, k_{x} p_{y} v_{x} v_{y} w - 4 \, k_{y} s_{x} v_{x} v_{y} w - 4 \, k_{x} s_{y} v_{x} v_{y} w + 4 \, k_{y} p_{y} v_{y}^{2} w - 4 \, k_{y} s_{y} v_{y}^{2} w + p_{x}^{2} v_{x}^{2} - 2 \, p_{x} s_{x} v_{x}^{2} + s_{x}^{2} v_{x}^{2} + 2 \, p_{x} p_{y} v_{x} v_{y} - 2 \, p_{y} s_{x} v_{x} v_{y} - 2 \, p_{x} s_{y} v_{x} v_{y} + 2 \, s_{x} s_{y} v_{x} v_{y} + p_{y}^{2} v_{y}^{2} - 2 \, p_{y} s_{y} v_{y}^{2} + s_{y}^{2} v_{y}^{2} = {\left| 2 \, k_{x} w + p_{x} - s_{x} \right|}^{2} {\left| v_{x} \right|}^{2} + {\left| 2 \, k_{y} w + p_{y} - s_{y} \right|}^{2} {\left| v_{x} \right|}^{2} + {\left| 2 \, k_{x} w + p_{x} - s_{x} \right|}^{2} {\left| v_{y} \right|}^{2} + {\left| 2 \, k_{y} w + p_{y} - s_{y} \right|}^{2} {\left| v_{y} \right|}^{2}$$
 
 
-My second thought was to look at the exterior product instead. The exterior product should be $0$ when two vectors have the same slope. It can't tell whether the direction is the same, but there are other tools for that.
+My second thought was to look at the exterior product instead. The exterior product should be $0$ when two vectors have the same slope. It can't tell whether the direction is the same, but there are other tools for that. So starting from the exterior product:
 $$
 \begin{align}
-u(k) \wedge v &\triangleq 0  \tag{1}\\
+u(k) \wedge v &\triangleq 0  \tag{1}
+\end{align}
+$$
+and working in cartesian coordinates:
+$$
+\begin{align}
 ((2wk_x, 2hk_y) - u) \wedge v &= 0 \\
 (2wk_x, 2hk_y) \wedge v &= u \wedge v \\ 
 2wv_yk_x - 2hv_xk_y &= u \wedge v \\
@@ -254,19 +262,14 @@ $$\begin{tikzpicture}
 \end{tikzpicture}$$
 
 
-Fist, the horizontal distance from $s$ to $p(k_0)$ is $\Delta x = u_x + 2wk_{0x}$.
+The horizontal distance from $s$ to $p(k_0)$ is $\Delta x = u_x + 2wk_{0x}$. One can calculate how many $k_{0x}$ just fit into $\Delta x$, or just exceed it.
 
 $$
 \Delta k_x =
-
 \begin{cases}
-
 \left\lceil \frac{\Delta x}{2w\Delta_0 k_x} \right\rceil & \text{if } p(k_0) \text{ is not in the same direction as } v \\
-
 \\
-
 \left\lfloor \frac{\Delta x}{2w\Delta_0 k_x} \right\rfloor & \text{if } p(k_0) \text{ is in the same direction as } v
-
 \end{cases}
 $$
 All that's left is using the new $k = k_0 + \Delta k_x$ to calculate $\left|p(k) - s\right|$ and check whether it's smaller and thus blocking the view.

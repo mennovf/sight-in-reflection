@@ -102,4 +102,38 @@
 
 \end{tikzpicture}
 
+\begin{tikzpicture} 
+% Draw the rectangular box
+\draw (0,0) rectangle (4,3);
+% Draw the point
+\fill (1,2) circle (2pt) node[above] {s};
+% Define the slope of incidence
+\pgfmathsetmacro{\slope}{30}
+% Draw the incident ray
+\draw (1,2) -- ++(\slope:2) coordinate (incident);
+% Calculate the slope of reflection
+\pgfmathsetmacro{\reflectslope}{0 - \slope}
+% Calculate the reflection point
+\path (incident) -- ++(\reflectslope:1) coordinate (reflection);
+% Draw the reflected ray
+\draw (incident) -- (reflection);
+ \end{tikzpicture}
+\begin{tikzpicture}
+  % Draw the rectangular box
+  \draw (0,0) rectangle (4,3);
+  \draw (0,3) rectangle (4,6);
+  
+  % Draw the point
+  \fill (1,2) circle (2pt) node[above] {s};
+  
+  \fill (1, 4) circle (2pt) node[above] {s'};
+  
+  % Define the slope of incidence
+  \pgfmathsetmacro{\slope}{30}
+  
+  % Draw the incident ray
+  \draw (1,2) -- ++(\slope:3) coordinate (incident);
+  
+\end{tikzpicture}
+
 \end{document}
