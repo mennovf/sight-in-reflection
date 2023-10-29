@@ -177,7 +177,7 @@ ak_x + b_ky &= c \tag{2}
 $$This is a much more manageable form. The constants $a$, $b$ and $c$ are all independent from $k$. There's one remaining difficulty: we have two unknowns and one contraints, so infinite solutions!
 
 Enter Bachet-Bézout. Bézout's identity states that 
-$ax+by=g = \mathrm{gcd}(a, b)$ has solutions and they can be found with the extended Euclidian algorithm (egcd) for calculating the greatest common denominator. There are two "minimal" solutions of which the egcd calculates one.
+$ax+by=g = \mathrm{gcd}(a, b)$ has solutions and they can be found with the extended Euclidian algorithm (egcd) for calculating the greatest common divisor. There are two "minimal" solutions of which the egcd calculates one.
 Even more useful is that it says that any integer of the form $ar+bt$ **is** a multiple of $g$.
 
 >This proves a (to me) surprising result: If $g \nmid c$, there are no lattice points with the same slope from $s$ as $v$! I find this surprising since the slope $m$ of $u = p - s$ is $m = \frac{u_y + 2wk_y}{u_x + 2hk_x}$ . For increasing distance from $p$, $k_x$ becomes larger which allows tweaks to $k_y$ to result in smaller and smaller changes to the slope.
@@ -281,4 +281,3 @@ The only thing it has going for it is that is uses a fixed amount of memory inst
 Let me know if there's a way to speed up this part!
 
 All in all I am happy to learn of these results and working through all the details. This problem of finding a point on a misaligned lattice is a nice interpretation of the Bézout identity which I hadn't encountered before, but is quite obvious after the fact.
-
