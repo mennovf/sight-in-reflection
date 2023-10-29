@@ -281,3 +281,4 @@ The only thing it has going for it is that is uses a fixed amount of memory inst
 Let me know if there's a way to speed up this part!
 
 All in all I am happy to learn of these results and working through all the details. This problem of finding a point on a misaligned lattice is a nice interpretation of the Bézout identity which I hadn't encountered before, but is quite obvious after the fact.
+
