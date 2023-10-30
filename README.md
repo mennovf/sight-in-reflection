@@ -152,7 +152,7 @@ For two vectors to point in the same direction, their (normalized) dot-product h
 $$ 
 \begin{align}
 u(k) \cdot v &\triangleq \left|u(k)\right|\left|v\right| \\
-\left(2 \, k_{x} w + p_{x} - s_{x}\right) v_{x} + \left(2 \, k_{y} w + p_{y} - s_{y}\right) v_{y} &= \sqrt{{\left| 2 \, k_{x} w + p_{x} - s_{x} \right|}^{2} + {\left| 2 \, k_{y} w + p_{y} - s_{y} \right|}^{2}} \sqrt{{\left| v_{x} \right|}^{2} + {\left| v_{y} \right|}^{2}}
+\left(2  k_{x} w + p_{x} - s_{x}\right) v_{x} + \left(2  k_{y} w + p_{y} - s_{y}\right) v_{y} &= \sqrt{{\left| 2  k_{x} w + p_{x} - s_{x} \right|}^{2} + {\left| 2  k_{y} w + p_{y} - s_{y} \right|}^{2}} \sqrt{{\left| v_{x} \right|}^{2} + {\left| v_{y} \right|}^{2}}
 \end{align}
 $$
 This is difficult to work with since we have a sum under the square root in $\left|u(k)\right|$. By squaring both sides this can be remedied. The squaring introduces a second solution: the one in the opposite direction but doesn't make the equation easier to solve for $k$.
@@ -170,9 +170,9 @@ and working in cartesian coordinates:
 $$
 \begin{align}
 ((2wk_x, 2hk_y) - u) \wedge v &= 0 \\
-(2wk_x, 2hk_y) \wedge v &= u \wedge v \\ 
+(2wk_x, 2hk_y) \wedge v &= u \wedge v \\
 2wv_yk_x - 2hv_xk_y &= u \wedge v \\
-ak_x + b_ky &= c \tag{2}
+ak_x + bk_y &= c \tag{2}
 \end{align}
 $$This is a much more manageable form. The constants $a$, $b$ and $c$ are all independent from $k$. There's one remaining difficulty: we have two unknowns and one constraint, so infinite solutions!
 
