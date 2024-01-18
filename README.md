@@ -6,7 +6,8 @@ The problem statement is as follows (with reduced fluff): There's a rectangular 
 
 The common way of thinking about these problems is not to reflect the ray, but copy and mirror the room instead. This is easier to work with since the ray remains an (infinite) straight line, i.e. a *mathematical line*. This results in an infinite grid or lattice of adjacent copies of the room.
 
-$$\begin{tikzpicture}
+<script type="text/tikz">
+\begin{tikzpicture}
   % Draw the rectangular box
   \draw (0,0) rectangle (4,3);
   
@@ -27,9 +28,9 @@ $$\begin{tikzpicture}
   
   % Draw the reflected ray
   \draw (incident) -- (reflection);
-\end{tikzpicture}$$
+\end{tikzpicture} </script>
 
-$$\begin{tikzpicture}
+<script type="text/tikz">\begin{tikzpicture}
   % Draw the rectangular box
   \draw (0,0) rectangle (4,3);
   \draw (0,3) rectangle (4,6);
@@ -45,7 +46,7 @@ $$\begin{tikzpicture}
   % Draw the incident ray
   \draw (1,2) -- ++(\slope:3) coordinate (incident);
   
-\end{tikzpicture}$$
+\end{tikzpicture}</script>
 
 ## The programming solution
 
@@ -64,7 +65,7 @@ I kept the first part of the solution the same: iterating through the grid and t
 
 There are at most four unique copies of $s$ and $t$, including the original, which are each repeated on a lattice with spacings of $(2w, 2h)$. Together they form the set $O$.
 
-$$\begin{tikzpicture}
+<script type="text/tikz">\begin{tikzpicture}
 
 % Draw the rectangular box
 
@@ -100,8 +101,9 @@ $$\begin{tikzpicture}
 
   
 
-\end{tikzpicture}$$
-$$\begin{tikzpicture}[scale=0.4]
+\end{tikzpicture}</script>
+
+<script type="text/tikz">\begin{tikzpicture}[scale=0.4]
 
 % Draw the point
 
@@ -139,11 +141,9 @@ $$\begin{tikzpicture}[scale=0.4]
 
 }
 
-  
 
-  
+\end{tikzpicture}</script>
 
-\end{tikzpicture}$$
 Now determining for each possible target point whether it's in view, can be rephrased as trying to find a point on the lattice formed from each of the 8 possible obstructions in $O$, which is in the exact same direction as the target and nearer to the original source than the target. If no such point can be found, the target is in view and a new viewing direction can be tallied.
 
 Now we'll focus on finding this obstructing lattice point for obstructions $p \in$ $O$ and a potential target $t$. The direction from source to target is $v = t - s$ and from source to obstruction $p$ is $u = p - s$.
@@ -211,7 +211,8 @@ Again $\Delta k_y$ and $\Delta k_x$ have to be integers. This is true when $\Del
 Now it's important to check what we've got from the egcd.
 If the initial $p(k_0)$ already points in the correct direction, we need to move as far as we can in the direction of $s$ without overshooting. If $p(k_0)$ is in the opposite direction of $v$, we need to move just enough to pass $s$.
 
-$$\begin{tikzpicture}
+<script type="text/tikz">
+\begin{tikzpicture}
 
 % Draw the point
 
@@ -261,7 +262,7 @@ $$\begin{tikzpicture}
 
   
 
-\end{tikzpicture}$$
+\end{tikzpicture} </script>
 
 
 The horizontal distance from $s$ to $p(k_0)$ is $\Delta x = u_x + 2wk_{0x}$. One can calculate how many $k_{0x}$ just fit into $\Delta x$, or just exceed it.
