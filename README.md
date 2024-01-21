@@ -28,9 +28,11 @@ The common way of thinking about these problems is not to reflect the ray, but c
   
   % Draw the reflected ray
   \draw (incident) -- (reflection);
-\end{tikzpicture} ```
+\end{tikzpicture}
+```
 
-```tikz\begin{tikzpicture}
+```tikz
+\begin{tikzpicture}
   % Draw the rectangular box
   \draw (0,0) rectangle (4,3);
   \draw (0,3) rectangle (4,6);
@@ -46,7 +48,8 @@ The common way of thinking about these problems is not to reflect the ray, but c
   % Draw the incident ray
   \draw (1,2) -- ++(\slope:3) coordinate (incident);
   
-\end{tikzpicture}```
+\end{tikzpicture}
+```
 
 ## The programming solution
 
@@ -65,7 +68,8 @@ I kept the first part of the solution the same: iterating through the grid and t
 
 There are at most four unique copies of $s$ and $t$, including the original, which are each repeated on a lattice with spacings of $(2w, 2h)$. Together they form the set $O$.
 
-```tikz\begin{tikzpicture}
+```tikz
+\begin{tikzpicture}
 
 % Draw the rectangular box
 
@@ -101,9 +105,11 @@ There are at most four unique copies of $s$ and $t$, including the original, whi
 
   
 
-\end{tikzpicture}```
+\end{tikzpicture}
+```
 
-```tikz\begin{tikzpicture}[scale=0.4]
+```tikz
+\begin{tikzpicture}[scale=0.4]
 
 % Draw the point
 
@@ -142,7 +148,8 @@ There are at most four unique copies of $s$ and $t$, including the original, whi
 }
 
 
-\end{tikzpicture}```
+\end{tikzpicture}
+```
 
 Now determining for each possible target point whether it's in view, can be rephrased as trying to find a point on the lattice formed from each of the 8 possible obstructions in $O$, which is in the exact same direction as the target and nearer to the original source than the target. If no such point can be found, the target is in view and a new viewing direction can be tallied.
 
@@ -262,7 +269,8 @@ If the initial $p(k_0)$ already points in the correct direction, we need to move
 
   
 
-\end{tikzpicture} ```
+\end{tikzpicture}
+```
 
 
 The horizontal distance from $s$ to $p(k_0)$ is $\Delta x = u_x + 2wk_{0x}$. One can calculate how many $k_{0x}$ just fit into $\Delta x$, or just exceed it.
